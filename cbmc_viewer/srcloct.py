@@ -124,7 +124,7 @@ def is_missing(name):
 def make_srcloc(path, func, line, wkdir, root):
     """Make a viewer source location from a CBMC source location."""
 
-    if path is None or line is None:
+    if path is None:
         logging.info("Generating a viewer srcloc for a missing CBMC srcloc.")
         return MISSING_SRCLOC
 
@@ -139,6 +139,8 @@ def make_srcloc(path, func, line, wkdir, root):
 
     if line is not None:
         line = int(line)
+    else:
+        line = 0
 
     return {'file': path, 'function': func, 'line': line}
 
