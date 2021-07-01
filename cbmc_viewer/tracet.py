@@ -402,7 +402,7 @@ def parse_xml_assignment(step, root=None):
             step.find('location'), root
         ),
         'detail': {
-            'lhs': step.find('full_lhs').text,
+            'lhs': step.get('display_name') or step.get('base_name') or step.get('identifier'),
             'lhs-lexical-scope': step.get('identifier'),
             'rhs-value': step.find('full_lhs_value').text,
             'rhs-binary': None
